@@ -1,0 +1,1 @@
+# Mapeamento: campo do formulário → coluna Google Sheets

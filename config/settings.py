@@ -1,0 +1,1 @@
+# Constantes globais, IDs da planilha, nomes das abas
