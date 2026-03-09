@@ -159,3 +159,7 @@ python -m pytest tests/
 ## 📄 Licença
 
 Uso interno — MENP-PI. Todos os direitos reservados.
+
+## Docs
+https://developers.google.com/workspace/drive/api/guides/about-sdk?hl=pt-br
+https://developers.google.com/workspace/sheets/api/guides/concepts?hl=pt-br
