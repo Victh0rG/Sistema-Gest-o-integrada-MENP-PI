@@ -1,8 +1,10 @@
 
 from infraestructure import google_auth
 from infraestructure import Authenticate
+from dotenv import load_dotenv
+import os
 
-# SCOPES = ['https://www.googleapis.com/auth/spreadsheets']
+load_dotenv()
 
 class SheetsService:
     def __init__(self):
@@ -10,16 +12,23 @@ class SheetsService:
         self.sheets = self.auth["sheets"]
         self.sheets_file = None
 
-    def create_sheet(self):
-        """cria um google sheet"""
+    def create_sheet(self, title: str):
+        """
+        cria um google sheet
+
+        Parâmetros
+        ----------
+        title : nome da planinha
+
+        """
         sheet_body = {
             "properties": {
-                "title": "MENP"
+                "title": title
             },
             'sheets': [
                 {
                     "properties": {
-                        "title": "MENP"
+                        "title": title
                     }
                 }
             ]
@@ -33,26 +42,32 @@ class SheetsService:
         return self.sheets_file
 
 
-    def create_page_sheet(self):
-        """cria uma nova página na planinha """
-        spreadsheet_id = "1t0O-596AHu7uNoSvWSZUmDf6zdnEztSmQeiOzkPlH5I"
+    def create_page_sheet(self, title: str):
+        """
+        Adiciona uma nova aba (página) à planilha existente.
+
+        Parâmetros
+        ----------
+        title : nome da nova aba
+
+        """
+        spreadsheet_id = os.getenv("SHEET_ID")
 
         request = {
             "requests": [
                 {
                     "addSheet": {
                         "properties": {
-                            "title": "Página 2"
+                            "title": title
                         }
                     }
                 }
             ]
         }
-        page = self.sheets.spreadsheets().batchUpdate(
+
+        page_sheet = self.sheets.spreadsheets().batchUpdate(
             spreadsheetId = spreadsheet_id,
             body = request
-        )
-        upade_page = print(spreadsheet_id)
-        return page
-
+        ).execute()
+        return page_sheet
 
