@@ -1,5 +1,7 @@
-
+from . import ai_client
 from . import google_auth
+from .ai_client import AiClient
+
 
 class Authenticate:
     """ Instancia da classe GoogleAuthManager para ouath2"""
@@ -21,3 +23,6 @@ class Authenticate:
                 }
 
         return self.services
+
+gemini = AiClient()
+gemini.connect('out-image-0-Im1.jpg', 'resuma o texto da imagem')
