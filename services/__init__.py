@@ -1,8 +1,8 @@
 from infraestructure import google_auth
-import drive_service
-import sheets_service
+# import drive_service
+# import sheets_service
 # from pdf_service import SmartPDFReader
-from services.pdf_service import pdf_has_image
+from pdf_service import PdfFileReader
 
 #
 # auth = google_auth.GoogleAuthManager()
@@ -20,7 +20,6 @@ from services.pdf_service import pdf_has_image
 # sheets.create_sheet()
 # sheets.create_page_sheet('exemplo MENP')
 
-# pdf_has_text('CERTIFICADO.pdf')
-pdf_has_image('portarias.pdf')
-# reader = SmartPDFReader()
-# texto = reader.read_pdf('portarias.pdf')
+
+pdf = PdfFileReader('portarias.pdf')
+pdf.read_pdf()
