@@ -1,4 +1,3 @@
-# Menu lateral
 """
 ui/components/sidebar.py
 Menu lateral de navegação do MENP-PI.
